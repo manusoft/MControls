@@ -20,7 +20,7 @@ Public Class MErrorLabel
     Private Count As Integer = 0
     Private _Style As _Styles
     Private _Theme As _Themes
-    Private _ShowTime As Integer = 1
+    Private _ShowTime As Integer = 3
     Private _Max As Integer = 10
 
     Public Sub New()
