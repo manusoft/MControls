@@ -32,9 +32,9 @@ Partial Class MErrorLabel
         Me.lblError.BackColor = System.Drawing.Color.Transparent
         Me.lblError.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lblError.ForeColor = System.Drawing.Color.White
-        Me.lblError.Location = New System.Drawing.Point(0, 0)
+        Me.lblError.Location = New System.Drawing.Point(5, 5)
         Me.lblError.Name = "lblError"
-        Me.lblError.Size = New System.Drawing.Size(262, 30)
+        Me.lblError.Size = New System.Drawing.Size(252, 25)
         Me.lblError.TabIndex = 0
         Me.lblError.Text = "Message"
         Me.lblError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -51,9 +51,10 @@ Partial Class MErrorLabel
         Me.Controls.Add(Me.lblError)
         Me.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.MinimumSize = New System.Drawing.Size(0, 30)
+        Me.MinimumSize = New System.Drawing.Size(0, 35)
         Me.Name = "MErrorLabel"
-        Me.Size = New System.Drawing.Size(262, 30)
+        Me.Padding = New System.Windows.Forms.Padding(5)
+        Me.Size = New System.Drawing.Size(262, 35)
         Me.ResumeLayout(False)
 
     End Sub
