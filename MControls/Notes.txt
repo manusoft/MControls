@@ -1,0 +1,167 @@
+﻿
+ToolBox Image of a control
+==========================
+1. Specifies the bitmap associated with the Button type.
+<ToolboxBitmap(GetType(Button))> 
+Class MyControl1
+	Inherits Button
+End Class
+
+2. Specifies a bitmap file.
+<ToolboxBitmap("C:\Documents and Settings\Joe\MyPics\myImage.bmp")>
+Class MyControl2
+	Inherits Button
+End Class
+
+3. Specifies a type that indicates the assembly to search, and the name of an image resource to look for.
+<ToolboxBitmap(GetType(MyControl), "MyControlBitmap")> 
+Class MyControl
+	Inherits Button
+End Class
+
+==================================================================
+Private Sub Text1_LostFocus()
+Dim MyDay As String, MyMonth As String, MyYear As String
+With Text1
+    If .Text <> "" Then
+        If InStr(1, .Text, "/") > 0 Then
+            If Len(.Text) = 10 Then
+                If ChkDate(.Text, True) = False Then
+                    .SetFocus
+                End If
+            Else
+                MsgBox "Invalid date"
+                .SetFocus
+            End If
+        Else
+            If Len(.Text) = 8 Then
+                MyDay = Mid(.Text, 1, 2)
+                MyMonth = Mid(.Text, 3, 2)
+                MyYear = Mid(.Text, 5, 4)
+                .Text = MyDay & "/" & MyMonth & "/" & MyYear
+                If ChkDate(.Text, True) = False Then
+                    .SetFocus
+                End If
+            Else
+                MsgBox "Invalid date"
+                .SetFocus
+            End If
+        End If
+    End If
+End With
+End Sub
+
+Public Function GetSplitDate(MInLine As String) As String()
+    Dim i As Integer, j As Integer, FoundIt As Boolean, MKey(50) As String
+         i = 1: FoundIt = False: j = 1
+         Do While i <= Len(MInLine)
+            If Mid(MInLine, i, 1) = "/" Then
+                j = j + 1
+            Else
+               MKey(j) = MKey(j) + Mid(MInLine, i, 1)
+            End If
+            i = i + 1
+         Loop
+    GetSplitDate = MKey()
+End Function
+
+Public Function ChkDate(sDate As String, DateFormatIndian As Boolean) As Boolean
+    Dim StrDate As String, StrMonth As String
+    Dim StrChkDate() As String, strError As String
+    Dim i As Integer, j As Integer, FoundIt As Boolean
+    Dim iYear
+    ChkDate = True: strError = ""
+    StrChkDate = GetSplitDate(sDate)
+    i = 1: FoundIt = False: j = 1
+    If Len(Trim(sDate)) > 10 Then
+        ChkDate = False
+        GoTo error
+    End If
+    Do While i <= Len(sDate)
+       If Mid(sDate, i, 1) = "/" Then
+           j = j + 1
+       End If
+       i = i + 1
+    Loop
+    If j <> 3 Then
+        ChkDate = False
+        GoTo error
+    End If
+    If DateFormatIndian Then
+        StrDate = StrChkDate(1)
+        StrMonth = StrChkDate(2)
+        iYear = StrChkDate(3)
+    Else
+        StrMonth = StrChkDate(1)
+        StrDate = StrChkDate(2)
+        iYear = StrChkDate(3)
+    End If
+   If Trim(StrDate) <> "" Or Trim(StrDate) <> "" Or Trim(iYear) <> "" Then
+        If IsNumeric(StrDate) Or IsNumeric(StrDate) Or IsNumeric(iYear) Then
+        Else
+            ChkDate = False
+            GoTo error
+        End If
+   Else
+        ChkDate = False
+        GoTo error
+   End If
+        If StrMonth <= 0 Or StrMonth > 12 Then
+            strError = strError & "Enter Months Between 1 TO 12" & vbCrLf
+            ChkDate = False
+        End If
+        If StrMonth = 1 Or StrMonth = 3 Or StrMonth = 5 Or StrMonth = 7 Or StrMonth = 8 Or StrMonth = 10 Or StrMonth = 12 Then
+            If StrDate <= 0 Or StrDate > 31 Then
+                strError = strError & "Enter Days Between 1 TO 31" & vbCrLf
+                ChkDate = False
+            End If
+        Else
+            If StrMonth = 4 Or StrMonth = 6 Or StrMonth = 9 Or StrMonth = 11 Then
+                     If StrDate <= 0 Or StrDate > 30 Then
+                         strError = strError & "Enter Days Between 1 TO 30" & vbCrLf
+                         ChkDate = False
+                     End If
+            Else
+                 If StrMonth = 2 And (iYear Mod 4 = 0) Then
+                     If StrDate <= 0 Or StrDate > 28 Then
+                         strError = strError & "Enter Days Between 1 TO 28" & vbCrLf
+                         ChkDate = False
+                     End If
+                  Else
+                     If StrDate <= 0 Or StrDate > 29 Then
+                         strError = strError & "Enter Days Between 1 TO 29" & vbCrLf
+                         ChkDate = False
+                     End If
+                 End If
+            End If
+        End If
+                
+error:
+        If Not ChkDate Then
+            If DateFormatIndian Then
+                MsgBox (strError & "Date should be in DD/MM/YYYY")
+            Else
+                MsgBox (strError & "Date should be in MM/DD/YYYY")
+            End If
+            Exit Function
+        End If
+End Function
+
+==================================================================================
+ Dim strFoo As String = "19-7-2014"        ' d-MM-yyyy
+ Dim strBar As String = "19-07-2014"       ' dd-MM-yyyy
+ Dim strJuly4 As String = "4-7-2014"       ' d-M-yyyy
+
+ ' several possible format styles
+ Dim formats() As String = {"d-MM-yyyy", "dd-MM-yyyy", 
+      "dd-M-yyyy", "d-M-yyyy"}
+
+ Dim thisDt As DateTime
+
+ ' this should work with all 3 strings above
+ If DateTime.TryParseExact(strFoo, formats,
+                           Globalization.CultureInfo.InvariantCulture,
+                           DateTimeStyles.None, thisDt) Then
+    Console.WriteLine("Success! {0}", thisDt.ToString)
+
+End If
