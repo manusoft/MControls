@@ -26,6 +26,7 @@ Partial Class Form1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.MErrorLabel1 = New MControls.MErrorLabel()
         Me.MSearchBox1 = New MControls.MSearchBox()
         Me.MDatePickerEditable2 = New MControls.MDatePickerEditable()
         Me.MDatePickerEditable1 = New MControls.MDatePickerEditable()
@@ -46,6 +47,20 @@ Partial Class Form1
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'MErrorLabel1
+        '
+        Me.MErrorLabel1.BackColor = System.Drawing.Color.Gainsboro
+        Me.MErrorLabel1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MErrorLabel1.Location = New System.Drawing.Point(102, 400)
+        Me.MErrorLabel1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.MErrorLabel1.MinimumSize = New System.Drawing.Size(0, 30)
+        Me.MErrorLabel1.Name = "MErrorLabel1"
+        Me.MErrorLabel1.ShowTime = 2
+        Me.MErrorLabel1.Size = New System.Drawing.Size(262, 30)
+        Me.MErrorLabel1.Style = MControls.MErrorLabel._Styles.Warning
+        Me.MErrorLabel1.TabIndex = 4
+        Me.MErrorLabel1.Visible = False
         '
         'MSearchBox1
         '
@@ -105,6 +120,7 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(933, 508)
+        Me.Controls.Add(Me.MErrorLabel1)
         Me.Controls.Add(Me.MSearchBox1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.MDatePickerEditable2)
@@ -120,4 +136,5 @@ Partial Class Form1
     Friend WithEvents MDatePickerEditable2 As MControls.MDatePickerEditable
     Friend WithEvents Button1 As Button
     Friend WithEvents MSearchBox1 As MControls.MSearchBox
+    Friend WithEvents MErrorLabel1 As MControls.MErrorLabel
 End Class

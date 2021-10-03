@@ -95,6 +95,12 @@
     </Compile>
     <Compile Include="MenuColorTable.vb" />
     <Compile Include="MenuRenderer.vb" />
+    <Compile Include="MErrorLabel.Designer.vb">
+      <DependentUpon>MErrorLabel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MErrorLabel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="MSearchBox.Designer.vb">
       <DependentUpon>MSearchBox.vb</DependentUpon>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MDatePickerEditable.resx">
       <DependentUpon>MDatePickerEditable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MErrorLabel.resx">
+      <DependentUpon>MErrorLabel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MSearchBox.resx">
       <DependentUpon>MSearchBox.vb</DependentUpon>
