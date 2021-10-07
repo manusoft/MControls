@@ -101,6 +101,12 @@
     <Compile Include="MErrorLabel.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="MLookupBox.Designer.vb">
+      <DependentUpon>MLookupBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MLookupBox.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="MSearchBox.Designer.vb">
       <DependentUpon>MSearchBox.vb</DependentUpon>
     </Compile>
@@ -142,6 +148,9 @@
     <EmbeddedResource Include="MErrorLabel.resx">
       <DependentUpon>MErrorLabel.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MLookupBox.resx">
+      <DependentUpon>MLookupBox.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MSearchBox.resx">
       <DependentUpon>MSearchBox.vb</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +178,10 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Notes.txt" />
+    <None Include="Resources\icons8_search_more_15px.png" />
+    <None Include="Resources\icons8_search_more_12px_3.png" />
+    <None Include="Resources\icons8_search_more_12px_1.png" />
+    <None Include="Resources\icons8_search_more_12px.png" />
     <None Include="Resources\icons8_delete_12px_1.png" />
     <None Include="Resources\icons8_search_17px.png" />
     <None Include="Resources\icons8_delete_12px.png" />
