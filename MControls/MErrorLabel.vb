@@ -6,10 +6,22 @@ Imports System.Windows.Forms
 <ToolboxBitmap(GetType(ToolTip))>
 <Description("Displays an error notification.")>
 Public Class MErrorLabel
+
+    '13,110,253 - primary
+    '108,117,125 - seconday
+    '25,135,84 - Success
+    '220,53,69 - Danger
+    '255,193,7 - Warning
+    '13,202,240 - Info
+
     Public Enum _Styles
-        Danger
+        Primary
+        Seconday
         Success
+        Danger
         Warning
+        Info
+        Custom
     End Enum
 
     Public Enum _Themes
@@ -20,8 +32,9 @@ Public Class MErrorLabel
     Private Count As Integer = 0
     Private _Style As _Styles
     Private _Theme As _Themes
-    Private _ShowTime As Integer = 3
+    Private _Delay As Integer = 3
     Private _Max As Integer = 10
+    Private _StyleCustomColor As Color
 
     Public Sub New()
 
@@ -31,6 +44,7 @@ Public Class MErrorLabel
         ' Add any initialization after the InitializeComponent() call.
         SetStyle(ControlStyles.UserPaint, True)
         MyBase.Visible = False
+        lblError.BackColor = Color.Transparent
         tmrTimer.Stop()
     End Sub
 
@@ -44,12 +58,12 @@ Public Class MErrorLabel
         End Set
     End Property
 
-    Public Property ShowTime As Integer
+    Public Property Delay As Integer
         Get
-            Return _ShowTime
+            Return _Delay
         End Get
         Set(value As Integer)
-            _ShowTime = value
+            _Delay = value
         End Set
     End Property
 
@@ -63,29 +77,46 @@ Public Class MErrorLabel
         End Set
     End Property
 
+    Public Property StyleCustomColor As Color
+        Get
+            Return _StyleCustomColor
+        End Get
+        Set(value As Color)
+            _StyleCustomColor = value
+            If Style = _Styles.Custom Then
+                MyBase.BackColor = value
+            End If
+        End Set
+    End Property
+
     Private Sub StyleChange()
         Select Case _Style
-            Case _Styles.Danger
-                MyBase.BackColor = Color.Red
-                lblError.BackColor = Color.Red
+            Case _Styles.Primary
+                MyBase.BackColor = Color.FromArgb(13, 110, 253)
+            Case _Styles.Seconday
+                MyBase.BackColor = Color.FromArgb(108, 117, 125)
             Case _Styles.Success
-                MyBase.BackColor = Color.Green
-                lblError.BackColor = Color.Green
+                MyBase.BackColor = Color.FromArgb(25, 135, 84)
+            Case _Styles.Danger
+                MyBase.BackColor = Color.FromArgb(220, 53, 69)
             Case _Styles.Warning
-                MyBase.BackColor = Color.DarkOrange
-                lblError.BackColor = Color.DarkOrange
+                MyBase.BackColor = Color.FromArgb(255, 193, 7)
+            Case _Styles.Info
+                MyBase.BackColor = Color.FromArgb(13, 202, 240)
+            Case _Styles.Custom
+                MyBase.BackColor = StyleCustomColor
         End Select
     End Sub
 
-    Public Sub ShowError(ErrorText As String)
+    Public Sub Message(MessageText As String)
         Count = 0
-        lblError.Text = ErrorText
+        lblError.Text = MessageText
         tmrTimer.Start()
     End Sub
     Private Sub tmrTimer_Tick(sender As Object, e As EventArgs) Handles tmrTimer.Tick
         MyBase.Visible = True
         Count += 1
-        _Max = _ShowTime * 10
+        _Max = _Delay * 10
 
         If Count = _Max Then
             tmrTimer.Stop()

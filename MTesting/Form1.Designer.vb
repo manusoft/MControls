@@ -25,9 +25,9 @@ Partial Class Form1
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
+        Me.DirectorySearcher1 = New System.DirectoryServices.DirectorySearcher()
         Me.MLookupBox1 = New MControls.MLookupBox()
         Me.MSearchBox1 = New MControls.MSearchBox()
-        Me.DirectorySearcher1 = New System.DirectoryServices.DirectorySearcher()
         Me.SuspendLayout()
         '
         'ImageList1
@@ -36,6 +36,12 @@ Partial Class Form1
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         Me.ImageList1.Images.SetKeyName(0, "icons8_bell_26px_1.png")
         Me.ImageList1.Images.SetKeyName(1, "icons8_camel_26px.png")
+        '
+        'DirectorySearcher1
+        '
+        Me.DirectorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01")
+        Me.DirectorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01")
+        Me.DirectorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01")
         '
         'MLookupBox1
         '
@@ -65,20 +71,12 @@ Partial Class Form1
         Me.MSearchBox1.Size = New System.Drawing.Size(250, 25)
         Me.MSearchBox1.TabIndex = 0
         '
-        'DirectorySearcher1
-        '
-        Me.DirectorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01")
-        Me.DirectorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01")
-        Me.DirectorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01")
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(933, 508)
-        Me.Controls.Add(Me.MLookupBox1)
-        Me.Controls.Add(Me.MSearchBox1)
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "Form1"
         Me.Text = "Form1"
