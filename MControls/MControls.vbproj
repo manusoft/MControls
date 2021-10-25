@@ -44,6 +44,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.Compatibility.Data" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -93,6 +94,12 @@
     <Compile Include="MDropdownMenu.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MDTP.Designer.vb">
+      <DependentUpon>MDTP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MDTP.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="MenuColorTable.vb" />
     <Compile Include="MenuRenderer.vb" />
     <Compile Include="MErrorLabel.Designer.vb">
@@ -115,6 +122,12 @@
     </Compile>
     <Compile Include="MTabControl.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MText.Designer.vb">
+      <DependentUpon>MText.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MText.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MToggleButton.vb">
       <SubType>Component</SubType>
@@ -145,6 +158,9 @@
     <EmbeddedResource Include="MDatePickerEditable.resx">
       <DependentUpon>MDatePickerEditable.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MDTP.resx">
+      <DependentUpon>MDTP.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MErrorLabel.resx">
       <DependentUpon>MErrorLabel.vb</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MSearchBox.resx">
       <DependentUpon>MSearchBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MText.resx">
+      <DependentUpon>MText.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

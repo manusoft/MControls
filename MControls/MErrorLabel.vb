@@ -108,7 +108,7 @@ Public Class MErrorLabel
         End Select
     End Sub
 
-    Public Sub Message(MessageText As String)
+    Public Sub ShowMessage(MessageText As String)
         Count = 0
         lblError.Text = MessageText
         tmrTimer.Start()
