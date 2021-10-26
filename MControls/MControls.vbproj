@@ -154,6 +154,7 @@
   <ItemGroup>
     <EmbeddedResource Include="MCircleProgressBar.resx">
       <DependentUpon>MCircleProgressBar.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MDatePickerEditable.resx">
       <DependentUpon>MDatePickerEditable.vb</DependentUpon>
@@ -197,6 +198,8 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Notes.txt" />
+    <None Include="Resources\white_calendar_18px.png" />
+    <None Include="Resources\black_calendar_18px.png" />
     <None Include="Resources\icons8_search_more_15px.png" />
     <None Include="Resources\icons8_search_more_12px_3.png" />
     <None Include="Resources\icons8_search_more_12px_1.png" />

@@ -11,7 +11,7 @@ Public Class MDTP
     Private mc As MonthCalendar
     Private btn As Button
 
-
+    Private _BackColor As Color = Color.DeepSkyBlue
 
     Private _Text As String
 
@@ -22,27 +22,28 @@ Public Class MDTP
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        Me.Size = New Size(235, 25)
+        Me.Size = New Size(231, 25)
 
         pnl = New Panel
-        pnl.BackColor = Color.Red
+        pnl.BackColor = BackColor
         'pnl.Font = Me.Font
-        pnl.Padding = New Padding(2, 2, 2, 2)
+        pnl.Padding = New Padding(1, 1, 1, 1)
         pnl.Size = New Size(231, 214)
 
         dtp = New DateTimePicker
-        dtp.Format = DateTimePickerFormat.Short
+        dtp.CustomFormat = CustomFormat
+        dtp.Format = Format
         dtp.ShowUpDown = True
         dtp.Dock = DockStyle.Top
-        dtp.MaxDate = CDate("12/31/9998")
         dtp.Value = Date.Now
         AddHandler dtp.ValueChanged, AddressOf dtp_ValueChanged
 
-        lblText.Text = dtp.Value
+        lblText.Text = dtp.Text
 
         mc = New MonthCalendar
         mc.Dock = DockStyle.Top
-        AddHandler mc.DateChanged, AddressOf mc_DateChanged
+        mc.MaxSelectionCount = 1
+        AddHandler mc.DateSelected, AddressOf mc_DateSelected
 
         btn = New Button
         btn.FlatStyle = FlatStyle.Flat
@@ -63,49 +64,116 @@ Public Class MDTP
         _host = New ToolStripControlHost(pnl)
 
         _popup.AutoClose = True
-        _popup.BackColor = Color.Red
+        _popup.BackColor = BackColor
         _popup.Margin = Padding.Empty
         _popup.Padding = Padding.Empty
         _popup.Items.Add(_host)
 
     End Sub
 
-    <Browsable(True)>
-    <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)>
-    <EditorBrowsable(EditorBrowsableState.Never)>
-    <Bindable(True)>
-    <Category("MControl")>
-    Public Overrides Property Text As String
-        Get
-            Return lblText.Text
-        End Get
-        Set(ByVal value As String)
-            lblText.Text = value
-        End Set
-    End Property
-
-    Private Sub btn_Click(sender As Object, e As EventArgs)
-        _popup.Close()
+    Private Sub mc_DateSelected(sender As Object, e As DateRangeEventArgs)
+        dtp.Value = mc.SelectionStart
+        lblText.Text = dtp.Text
     End Sub
 
-    Private Sub mc_DateChanged(sender As Object, e As DateRangeEventArgs)
-        dtp.Value = mc.SelectionStart
+    Private Sub btn_Click(sender As Object, e As EventArgs)
+        lblText.Text = dtp.Text
+        _popup.Close()
     End Sub
 
     Private Sub dtp_ValueChanged(sender As Object, e As EventArgs)
         mc.SelectionStart = dtp.Value
-        lblText.Text = dtp.Text
     End Sub
 
     Private Sub btnDropdown_Click(sender As Object, e As EventArgs) Handles btnDropdown.Click
         If Not IsNothing(_host) Then
             _host.AutoSize = False
-            _host.Margin = New Padding(2, 2, 2, 2)
+            _host.Margin = Padding.Empty
             _host.Padding = Padding.Empty
             _popup.Show(ParentForm, New Point(Me.Left, Me.Bottom))
+
+            pnl.BackColor = BackColor
+            If (BackColor.GetBrightness() >= 0.6F) Then
+                btn.ForeColor = Color.Black
+            Else
+                btn.ForeColor = Color.White
+            End If
         End If
     End Sub
 
     <Category("MControl")> <DescriptionAttribute("DateTimePickerMaxDateDescr")>
     Public Property MaxDate As Date
+        Get
+            Return dtp.MaxDate
+        End Get
+        Set(value As Date)
+            dtp.MaxDate = value
+        End Set
+    End Property
+
+    <CategoryAttribute("MControl")> <DescriptionAttribute("DateTimePickerMinDateDescr")>
+    Public Property MinDate As Date
+        Get
+            Return dtp.MinDate
+        End Get
+        Set(value As Date)
+            dtp.MinDate = value
+        End Set
+    End Property
+
+
+    <RefreshProperties(RefreshProperties.Repaint)> <CategoryAttribute("CatAppearance")> <DescriptionAttribute("DateTimePickerFormatDescr")>
+    Public Property Format As DateTimePickerFormat
+        Get
+            Return dtp.Format
+        End Get
+        Set(value As DateTimePickerFormat)
+            dtp.Format = value
+        End Set
+    End Property
+
+    Public Overrides Property BackColor As Color
+        Get
+            Return _BackColor
+        End Get
+        Set(value As Color)
+            _BackColor = value
+            MyBase.BackColor = value
+            lblText.BackColor = value
+            btnDropdown.BackColor = value
+            If (BackColor.GetBrightness() >= 0.6F) Then
+                btnDropdown.Image = My.Resources.black_calendar
+            Else
+                btnDropdown.Image = My.Resources.white_calendar
+            End If
+            'pnl.BackColor = value
+
+        End Set
+    End Property
+
+
+    <Bindable(True)>
+    <RefreshProperties(RefreshProperties.All)>
+    <CategoryAttribute("MControl")>
+    <DescriptionAttribute("DateTimePickerValueDescr")>
+    Public Property Value As Date
+        Get
+            Return dtp.Value
+        End Get
+        Set(value As Date)
+            dtp.Value = value
+        End Set
+    End Property
+
+    <Localizable(True)> <RefreshProperties(RefreshProperties.Repaint)>
+    <CategoryAttribute("MControl")>
+    <DescriptionAttribute("DateTimePickerCustomFormatDescr")>
+    Public Property CustomFormat As String
+        Get
+            Return dtp.CustomFormat
+        End Get
+        Set(value As String)
+            dtp.CustomFormat = value
+        End Set
+    End Property
 End Class
