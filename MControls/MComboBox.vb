@@ -22,12 +22,12 @@ Public Class MComboBox
 
         Me.MinimumSize = New Size(0, 23)
 
-        Me.ResumeLayout()
-
         SetStyle(ControlStyles.DoubleBuffer, True)
         SetStyle(ControlStyles.ResizeRedraw, True)
         SetStyle(ControlStyles.OptimizedDoubleBuffer, True)
         SetStyle(ControlStyles.AllPaintingInWmPaint, True)
+
+        Me.ResumeLayout()
     End Sub
 
     <Category("MControl")>
@@ -131,8 +131,20 @@ Public Class MComboBox
                     g.DrawRectangle(New Pen(_BorderColor), clientArea.X, clientArea.Y, clientArea.Width, clientArea.Height) 'Border
                 End If
             End Using
+
             ReleaseDC(m.HWnd, hDC)
         End If
+    End Sub
+
+    Protected Overrides Sub OnDrawItem(ByVal e As System.Windows.Forms.DrawItemEventArgs)
+        Try
+            e.DrawBackground()
+            e.Graphics.DrawString(Me.Items(e.Index).ToString, Me.Font, Brushes.Black, e.Bounds, StringFormat.GenericDefault)
+            e.DrawFocusRectangle()
+
+        Catch ex As Exception
+            Debug.Print(ex.Message)
+        End Try
     End Sub
 
     Protected Overrides Sub OnPaintBackground(pevent As PaintEventArgs)

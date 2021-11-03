@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class MDTP
+Partial Class MDatePicker2
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
@@ -33,7 +33,7 @@ Partial Class MDTP
         Me.lblText.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.lblText.Location = New System.Drawing.Point(2, 2)
         Me.lblText.Name = "lblText"
-        Me.lblText.Size = New System.Drawing.Size(206, 21)
+        Me.lblText.Size = New System.Drawing.Size(204, 21)
         Me.lblText.TabIndex = 0
         Me.lblText.Text = "2021/10/25"
         Me.lblText.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -47,7 +47,7 @@ Partial Class MDTP
         Me.btnDropdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDropdown.Font = New System.Drawing.Font("Segoe UI", 9.75!)
         Me.btnDropdown.Image = Global.MControls.My.Resources.Resources.black_calendar
-        Me.btnDropdown.Location = New System.Drawing.Point(208, 2)
+        Me.btnDropdown.Location = New System.Drawing.Point(206, 2)
         Me.btnDropdown.Name = "btnDropdown"
         Me.btnDropdown.Size = New System.Drawing.Size(21, 21)
         Me.btnDropdown.TabIndex = 1
@@ -60,10 +60,10 @@ Partial Class MDTP
         Me.Controls.Add(Me.lblText)
         Me.Controls.Add(Me.btnDropdown)
         Me.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        Me.MinimumSize = New System.Drawing.Size(231, 25)
+        Me.MinimumSize = New System.Drawing.Size(229, 25)
         Me.Name = "MDTP"
         Me.Padding = New System.Windows.Forms.Padding(2)
-        Me.Size = New System.Drawing.Size(231, 25)
+        Me.Size = New System.Drawing.Size(229, 25)
         Me.ResumeLayout(False)
 
     End Sub

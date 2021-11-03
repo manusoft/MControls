@@ -94,10 +94,10 @@
     <Compile Include="MDropdownMenu.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MDTP.Designer.vb">
-      <DependentUpon>MDTP.vb</DependentUpon>
+    <Compile Include="MDatePicker2.Designer.vb">
+      <DependentUpon>MDatePicker2.vb</DependentUpon>
     </Compile>
-    <Compile Include="MDTP.vb">
+    <Compile Include="MDatePicker2.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MenuColorTable.vb" />
@@ -113,6 +113,12 @@
     </Compile>
     <Compile Include="MLookupBox.vb">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MMC.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MPopupMsg.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="MSearchBox.Designer.vb">
       <DependentUpon>MSearchBox.vb</DependentUpon>
@@ -159,8 +165,8 @@
     <EmbeddedResource Include="MDatePickerEditable.resx">
       <DependentUpon>MDatePickerEditable.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MDTP.resx">
-      <DependentUpon>MDTP.vb</DependentUpon>
+    <EmbeddedResource Include="MDatePicker2.resx">
+      <DependentUpon>MDatePicker2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MErrorLabel.resx">
       <DependentUpon>MErrorLabel.vb</DependentUpon>

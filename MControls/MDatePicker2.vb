@@ -3,7 +3,7 @@ Imports System.Drawing
 Imports System.Windows.Forms
 Imports Microsoft.VisualBasic.Compatibility.VB6
 
-Public Class MDTP
+Public Class MDatePicker2
     Private _popup As ToolStripDropDown = New ToolStripDropDown()
     Private _host As ToolStripControlHost
     Private pnl As Panel
@@ -13,7 +13,7 @@ Public Class MDTP
 
     Private _BackColor As Color = Color.DeepSkyBlue
 
-    Private _Text As String
+    Private _DateText As String
 
 
     Public Sub New()
@@ -22,13 +22,15 @@ Public Class MDTP
         InitializeComponent()
 
         ' Add any initialization after the InitializeComponent() call.
-        Me.Size = New Size(231, 25)
+        Me.Size = New Size(229, 25)
+
+        SuspendLayout()
 
         pnl = New Panel
         pnl.BackColor = BackColor
         'pnl.Font = Me.Font
         pnl.Padding = New Padding(1, 1, 1, 1)
-        pnl.Size = New Size(231, 214)
+        pnl.Size = New Size(229, 214)
 
         dtp = New DateTimePicker
         dtp.CustomFormat = CustomFormat
@@ -42,6 +44,7 @@ Public Class MDTP
 
         mc = New MonthCalendar
         mc.Dock = DockStyle.Top
+        mc.BackColor = Color.Blue
         mc.MaxSelectionCount = 1
         AddHandler mc.DateSelected, AddressOf mc_DateSelected
 
@@ -49,9 +52,9 @@ Public Class MDTP
         btn.FlatStyle = FlatStyle.Flat
         btn.Font = Me.Font
         btn.FlatAppearance.BorderSize = 0
-        btn.FlatAppearance.BorderColor = btn.BackColor
+        btn.FlatAppearance.BorderColor = BackColor
         btn.Dock = DockStyle.Top
-        btn.Text = "SELECT"
+        btn.Text = "&OK"
         btn.Height = 25
         AddHandler btn.Click, AddressOf btn_Click
 
@@ -69,6 +72,7 @@ Public Class MDTP
         _popup.Padding = Padding.Empty
         _popup.Items.Add(_host)
 
+        ResumeLayout()
     End Sub
 
     Private Sub mc_DateSelected(sender As Object, e As DateRangeEventArgs)
@@ -176,4 +180,37 @@ Public Class MDTP
             dtp.CustomFormat = value
         End Set
     End Property
+
+    <Browsable(True)> <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> <EditorBrowsable(EditorBrowsableState.Advanced)>
+    Public Overrides Property Text As String
+        Get
+            Return dtp.Text
+        End Get
+        Set(value As String)
+            If IsDate(value) Then
+                dtp.Text = CDate(value)
+            End If
+        End Set
+    End Property
+
+    Public ReadOnly Property DateText As String
+        Get
+            Return lblText.Text
+        End Get
+    End Property
+
+    Protected Overrides Sub CreateHandle()
+        MyBase.CreateHandle()
+        If BorderStyle = BorderStyle.Fixed3D Then
+            BorderStyle = BorderStyle.None
+        End If
+    End Sub
+
+    Private Sub lblText_Click(sender As Object, e As EventArgs) Handles lblText.Click
+        btnDropdown.PerformClick()
+    End Sub
+
+    Private Sub lblText_DoubleClick(sender As Object, e As EventArgs) Handles lblText.DoubleClick
+        lblText.Text = ""
+    End Sub
 End Class
