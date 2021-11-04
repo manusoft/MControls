@@ -156,6 +156,9 @@
     <Compile Include="MTextBox.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MPopupForm.vb">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MCircleProgressBar.resx">
@@ -204,6 +207,14 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Notes.txt" />
+    <None Include="Resources\icons8_delete_18px_1.png" />
+    <None Include="Resources\icons8_delete_18px.png" />
+    <None Include="Resources\icons8_delete_20px_1.png" />
+    <None Include="Resources\icons8_delete_20px.png" />
+    <None Include="Resources\icons8_delete_22px_1.png" />
+    <None Include="Resources\icons8_delete_22px.png" />
+    <None Include="Resources\icons8_close_window_22px.png" />
+    <None Include="Resources\icons8_close_window_18px.png" />
     <None Include="Resources\white_calendar_18px.png" />
     <None Include="Resources\black_calendar_18px.png" />
     <None Include="Resources\icons8_search_more_15px.png" />

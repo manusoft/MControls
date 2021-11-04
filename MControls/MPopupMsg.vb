@@ -2,7 +2,7 @@
 Imports System.Drawing
 Imports System.Windows.Forms
 
-<ToolboxBitmap(GetType(Form))>
+<ToolboxBitmap(GetType(OpenFileDialog))>
 <Description("Displays a popup window.")>
 Public Class MPopupMsg
     Inherits BackgroundWorker
@@ -31,8 +31,40 @@ Public Class MPopupMsg
     Private _dropShadowEnabled As Boolean = True
     Private _enabled As Boolean = True
     Private _font As Font
-    Private myColor As Color = Color.Empty
+    Private _width As Integer = 300
+    Private _height As Integer = 150
 
+    Public Sub New()
+
+        ' This call is required by the designer.
+
+        ' Add any initialization after the InitializeComponent() call.
+
+        pnl = New Panel
+        pnl.BackColor = Backcolor
+        pnl.Font = New Font("Segoe UI", 10.5F)
+        pnl.Padding = New Padding(1, 1, 1, 1)
+        pnl.Size = New Size(200, 100)
+
+        lbl = New Label
+        lbl.AutoSize = False
+        lbl.AutoEllipsis = True
+        lbl.Dock = DockStyle.Fill
+        lbl.Font = pnl.Font
+        lbl.Text = "Sample Popup Message."
+        lbl.TextAlign = ContentAlignment.MiddleCenter
+
+        pnl.Controls.Add(lbl)
+
+        _host = New ToolStripControlHost(pnl)
+
+        _popup.AutoClose = True
+        _popup.BackColor = Backcolor
+        _popup.Margin = Padding.Empty
+        _popup.Padding = Padding.Empty
+        _popup.Items.Add(_host)
+
+    End Sub
     Public Property Style As Styles
         Get
             Return _Style
@@ -119,6 +151,26 @@ Public Class MPopupMsg
         End Set
     End Property
 
+    Public Property Width As Integer
+        Get
+            Return _width
+        End Get
+        Set(value As Integer)
+            _width = value
+            pnl.Width = value
+        End Set
+    End Property
+
+    Public Property Height As Integer
+        Get
+            Return _height
+        End Get
+        Set(value As Integer)
+            _height = value
+            pnl.Height = value
+        End Set
+    End Property
+
     Private Sub StyleChange()
         Select Case Style
             Case Styles.Primary
@@ -138,49 +190,15 @@ Public Class MPopupMsg
         End Select
     End Sub
 
-    Public Sub New()
-
-        ' This call is required by the designer.
-
-        ' Add any initialization after the InitializeComponent() call.
-
-        pnl = New Panel
-        pnl.BackColor = Backcolor
-        pnl.Font = New Font("Segoe UI", 10.5F)
-        pnl.Padding = New Padding(1, 1, 1, 1)
-        pnl.Size = New Size(200, 100)
-
-        lbl = New Label
-        lbl.AutoSize = False
-        lbl.AutoEllipsis = True
-        lbl.Dock = DockStyle.Fill
-        lbl.Font = pnl.Font
-        lbl.Text = "Sample Popup Message."
-        lbl.TextAlign = ContentAlignment.MiddleCenter
-
-        pnl.Controls.Add(lbl)
-
-        _host = New ToolStripControlHost(pnl)
-
-        _popup.AutoClose = True
-        _popup.BackColor = Backcolor
-        _popup.Margin = Padding.Empty
-        _popup.Padding = Padding.Empty
-        _popup.Items.Add(_host)
-
-    End Sub
-
     Public Sub Show(ByVal control As Control,
                     ByVal Text As String,
                     Optional ByVal background As Styles = Styles.Custom,
                     Optional ByVal x As Integer = 0,
-                    Optional ByVal y As Integer = 0,
-                    Optional ByVal width As Integer = 300,
-                    Optional ByVal height As Integer = 150)
+                    Optional ByVal y As Integer = 0)
 
         If Not IsNothing(_host) Then
-            pnl.Width = width
-            pnl.Height = height
+            pnl.Width = Width
+            pnl.Height = Height
 
             lbl.Text = Text
             Style = background
@@ -190,7 +208,7 @@ Public Class MPopupMsg
             _host.Padding = Padding.Empty
 
             If x = 0 And y = 0 Then
-                _popup.Show(control, New Point((control.Width / 2) - _popup.Width / 2, (control.Height / 2) - _popup.Height / 2))
+                _popup.Show(control, New Point((control.ClientRectangle.Width / 2) - _popup.Width / 2, (control.ClientRectangle.Height / 2) - _popup.Height / 2))
             Else
                 _popup.Show(control, New Point(x, y))
             End If

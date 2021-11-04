@@ -22,75 +22,73 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.MonthCalendar1 = New System.Windows.Forms.MonthCalendar()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.MComboBox1 = New MControls.MComboBox()
-        Me.MDatePicker21 = New MControls.MDatePicker2()
-        Me.Mmc1 = New MControls.MMC()
-        Me.MPopupMsg1 = New MControls.MPopupMsg()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.PopupForm1 = New MControls.MPopupForm()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'MonthCalendar1
-        '
-        Me.MonthCalendar1.Location = New System.Drawing.Point(86, 73)
-        Me.MonthCalendar1.Name = "MonthCalendar1"
-        Me.MonthCalendar1.TabIndex = 1
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(494, 393)
+        Me.Button1.Location = New System.Drawing.Point(12, 50)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 4
+        Me.Button1.TabIndex = 0
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'MComboBox1
+        'Button2
         '
-        Me.MComboBox1.ArrowColor = System.Drawing.Color.CornflowerBlue
-        Me.MComboBox1.BackColor = System.Drawing.Color.Teal
-        Me.MComboBox1.BorderColor = System.Drawing.Color.Gainsboro
-        Me.MComboBox1.BorderFocusColor = System.Drawing.Color.CornflowerBlue
-        Me.MComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.MComboBox1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MComboBox1.ForeColor = System.Drawing.SystemColors.Info
-        Me.MComboBox1.FormattingEnabled = True
-        Me.MComboBox1.Items.AddRange(New Object() {"Male", "Female", "Other"})
-        Me.MComboBox1.Location = New System.Drawing.Point(484, 181)
-        Me.MComboBox1.Name = "MComboBox1"
-        Me.MComboBox1.Size = New System.Drawing.Size(239, 25)
-        Me.MComboBox1.TabIndex = 6
+        Me.Button2.Location = New System.Drawing.Point(12, 108)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 1
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
         '
-        'MDatePicker21
+        'Button3
         '
-        Me.MDatePicker21.BackColor = System.Drawing.Color.DeepSkyBlue
-        Me.MDatePicker21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.MDatePicker21.CustomFormat = Nothing
-        Me.MDatePicker21.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        Me.MDatePicker21.Format = System.Windows.Forms.DateTimePickerFormat.[Long]
-        Me.MDatePicker21.Location = New System.Drawing.Point(494, 275)
-        Me.MDatePicker21.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
-        Me.MDatePicker21.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
-        Me.MDatePicker21.MinimumSize = New System.Drawing.Size(229, 25)
-        Me.MDatePicker21.Name = "MDatePicker21"
-        Me.MDatePicker21.Padding = New System.Windows.Forms.Padding(2)
-        Me.MDatePicker21.Size = New System.Drawing.Size(229, 25)
-        Me.MDatePicker21.TabIndex = 5
-        Me.MDatePicker21.Value = New Date(2021, 11, 1, 11, 42, 8, 148)
+        Me.Button3.Location = New System.Drawing.Point(12, 191)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 2
+        Me.Button3.Text = "Button3"
+        Me.Button3.UseVisualStyleBackColor = True
         '
-        'Mmc1
+        'ToolStrip1
         '
-        Me.Mmc1.Location = New System.Drawing.Point(99, 292)
-        Me.Mmc1.Name = "Mmc1"
-        Me.Mmc1.TabIndex = 3
+        Me.ToolStrip1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(933, 25)
+        Me.ToolStrip1.TabIndex = 3
+        Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'MPopupMsg1
+        'ToolStripButton1
         '
-        Me.MPopupMsg1.Backcolor = System.Drawing.Color.FromArgb(CType(CType(13, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(253, Byte), Integer))
-        Me.MPopupMsg1.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        Me.MPopupMsg1.ForeColor = System.Drawing.Color.White
-        Me.MPopupMsg1.Style = MControls.MPopupMsg.Styles.Primary
-        Me.MPopupMsg1.StyleCustomColor = System.Drawing.Color.Empty
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
+        Me.ToolStripButton1.Text = "ToolStripButton1"
+        '
+        'PopupForm1
+        '
+        Me.PopupForm1.Backcolor = System.Drawing.Color.White
+        Me.PopupForm1.Font = Nothing
+        Me.PopupForm1.ForeColor = System.Drawing.Color.Black
+        Me.PopupForm1.Height = 150
+        Me.PopupForm1.HostForm = Nothing
+        Me.PopupForm1.ShowTitle = False
+        Me.PopupForm1.TitleBackcolor = System.Drawing.Color.White
+        Me.PopupForm1.TitleText = "Title"
+        Me.PopupForm1.Width = 300
         '
         'Form1
         '
@@ -98,23 +96,26 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
         Me.ClientSize = New System.Drawing.Size(933, 508)
-        Me.Controls.Add(Me.MComboBox1)
-        Me.Controls.Add(Me.MDatePicker21)
+        Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Mmc1)
-        Me.Controls.Add(Me.MonthCalendar1)
         Me.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Name = "Form1"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents MSearchBox1 As MControls.MSearchBox
     Friend WithEvents MLookupBox1 As MControls.MLookupBox
-    Friend WithEvents MonthCalendar1 As MonthCalendar
-    Friend WithEvents Mmc1 As MControls.MMC
     Friend WithEvents Button1 As Button
-    Friend WithEvents MDatePicker21 As MControls.MDatePicker2
-    Friend WithEvents MComboBox1 As MControls.MComboBox
-    Friend WithEvents MPopupMsg1 As MControls.MPopupMsg
+    Friend WithEvents PopupForm1 As MControls.MPopupForm
+    Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents ToolStripButton1 As ToolStripButton
 End Class
