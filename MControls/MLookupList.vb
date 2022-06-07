@@ -7,7 +7,9 @@ Imports System.Windows.Forms
 <DefaultEvent("TextChanged")>
 <ToolboxBitmap(GetType(MaskedTextBox))>
 <Description("SearchBox control.")>
-Public Class MLookupBox
+Public Class MLookupList
+    Private _popup As ToolStripDropDown = New ToolStripDropDown()
+    Private _host As ToolStripControlHost
 
     Private _BorderColor As Color = Color.Gray
     Private _BorderFocusColor As Color = Color.CornflowerBlue
@@ -16,9 +18,12 @@ Public Class MLookupBox
     Private _PlaceholderText As String = ""
     Private _Font As Font
     Private _IsFocused As Boolean = False
-    Private _AutoCompleteCustomSource As AutoCompleteStringCollection
-    Private _AutoCompleteSource As AutoCompleteSource
-    Private _AutoCompleteMode As AutoCompleteMode
+    Private _dropDownWidth As Integer = Me.Width
+    Private _dropDownHeight As Integer = Me.Height
+
+    Private _data As DataTable = New DataTable
+
+    Private _DataSource As Object
 
     Private Const _SetPlaceholder As Integer = &H1501
 
@@ -42,7 +47,45 @@ Public Class MLookupBox
         InitializeComponent()
         SetStyle(ControlStyles.UserPaint, True)
         ' Add any initialization after the InitializeComponent() call.
+
         MinimumSize = New Size(0, 25)
+
+        SuspendLayout()
+
+        pnl.BackColor = BackColor
+
+        txtFind.Text = ""
+        txtFind.Dock = DockStyle.Top
+        ' AddHandler txtFind.TextChanged, AddressOf txtFind_TextChanged
+
+
+        ' AddHandler dgv.SelectionChanged, AddressOf dgv_SelectionChanged
+
+
+        'AddHandler btn.Click, AddressOf btn_Click
+
+        _host = New ToolStripControlHost(pnl)
+
+        _popup.AutoClose = True
+        _popup.BackColor = BackColor
+        _popup.Margin = Padding.Empty
+        _popup.Padding = Padding.Empty
+        _popup.Items.Add(_host)
+
+        ResumeLayout()
+    End Sub
+
+    Private Sub btn_Click(sender As Object, e As EventArgs)
+        dgv.DataSource = _data
+        MsgBox("clicked" & _data.Rows.Count)
+    End Sub
+
+    Private Sub dgv_SelectionChanged(sender As Object, e As EventArgs)
+        Throw New NotImplementedException()
+    End Sub
+
+    Private Sub txtFind_TextChanged(sender As Object, e As EventArgs)
+        Debug.Print(txtFind.Text)
     End Sub
 
     'Properties
@@ -146,35 +189,33 @@ Public Class MLookupBox
     Public Shadows Event TextChanged As EventHandler
 
 
-    Public Property AutoCompleteSource As AutoCompleteSource
+    '<AttributeProvider(GetType(IListSource))>
+    '<RefreshProperties(RefreshProperties.Repaint)>
+    '<CategoryAttribute("CatData")>
+    '<DescriptionAttribute("DataGridViewDataSourceDescr")>
+    Public Property DataSource As Object
         Get
-            Return txtSearch.AutoCompleteSource
+            Return dgv.DataSource
         End Get
-        Set(value As AutoCompleteSource)
-            txtSearch.AutoCompleteSource = value
+        Set(value As Object)
+            dgv.DataSource = value
+            dgv.DataSource = value
         End Set
     End Property
 
-    Public Property AutoCompleteMode As AutoCompleteMode
+    Public Property Data As DataTable
         Get
-            Return txtSearch.AutoCompleteMode
+            Return _data
         End Get
-        Set(value As AutoCompleteMode)
-            txtSearch.AutoCompleteMode = value
+        Set(value As DataTable)
+            _data = value
+            If Not IsNothing(value) Then
+                dgv.DataSource = value
+                dgv.DataSource = value
+            End If
         End Set
     End Property
 
-    <Browsable(True)> <DesignerSerializationVisibility(DesignerSerializationVisibility.Content)> <Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", GetType(Drawing.Design.UITypeEditor))> <EditorBrowsable(EditorBrowsableState.Always)> <Localizable(True)> <DescriptionAttribute("TextBoxAutoCompleteCustomSourceDescr")>
-    Public Property AutoCompleteCustomSource As AutoCompleteStringCollection
-        Get
-            Return txtSearch.AutoCompleteCustomSource
-        End Get
-        Set(value As AutoCompleteStringCollection)
-            txtSearch.AutoCompleteCustomSource = value
-        End Set
-    End Property
-
-    'Draw borders
     Protected Overrides Sub OnPaint(e As PaintEventArgs)
         Using bmp As Bitmap = New Bitmap(Width, Height)
             Using g As Graphics = Me.CreateGraphics()
@@ -196,8 +237,20 @@ Public Class MLookupBox
     End Sub
 
     Private Sub btnMore_Click(sender As Object, e As EventArgs) Handles btnMore.Click
-        RaiseEvent LookupClick()
-        txtSearch.Focus()
+        If Not IsNothing(_host) Then
+            _host.AutoSize = False
+            _host.Margin = Padding.Empty
+            _host.Padding = Padding.Empty
+            _popup.Show(ParentForm, New Point(Me.Left, Me.Bottom))
+
+            pnl.BackColor = BackColor
+            If (BackColor.GetBrightness() >= 0.6F) Then
+                btn.ForeColor = Color.Black
+            Else
+                btn.ForeColor = Color.White
+            End If
+        End If
+        'txtSearch.Focus()
     End Sub
 
     Private Sub txtSearch_TextChanged(sender As Object, e As EventArgs) Handles txtSearch.TextChanged

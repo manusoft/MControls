@@ -26,10 +26,14 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.MTextBox1 = New MControls.MTextBox()
+        Me.MLookupList1 = New MControls.MLookupList()
+        Me.MLookupBox2 = New MControls.MLookupBox()
         Me.PopupForm1 = New MControls.MPopupForm()
-        Me.ToolStrip1.SuspendLayout()
+        Me.MPopupMsg1 = New MControls.MPopupMsg()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -59,44 +63,103 @@ Partial Class Form1
         Me.Button3.Text = "Button3"
         Me.Button3.UseVisualStyleBackColor = True
         '
-        'ToolStrip1
+        'Button4
         '
-        Me.ToolStrip1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(933, 25)
-        Me.ToolStrip1.TabIndex = 3
-        Me.ToolStrip1.Text = "ToolStrip1"
+        Me.Button4.Location = New System.Drawing.Point(387, 261)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 7
+        Me.Button4.Text = "Button4"
+        Me.Button4.UseVisualStyleBackColor = True
         '
-        'ToolStripButton1
+        'MTextBox1
         '
-        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(23, 22)
-        Me.ToolStripButton1.Text = "ToolStripButton1"
+        Me.MTextBox1.BorderColor = System.Drawing.Color.Gainsboro
+        Me.MTextBox1.BorderFocusColor = System.Drawing.Color.CornflowerBlue
+        Me.MTextBox1.Location = New System.Drawing.Point(169, 321)
+        Me.MTextBox1.MinimumSize = New System.Drawing.Size(4, 23)
+        Me.MTextBox1.Name = "MTextBox1"
+        Me.MTextBox1.NumberMode = False
+        Me.MTextBox1.PlaceHolderText = ""
+        Me.MTextBox1.Size = New System.Drawing.Size(235, 23)
+        Me.MTextBox1.TabIndex = 6
+        '
+        'MLookupList1
+        '
+        Me.MLookupList1.BackColor = System.Drawing.Color.White
+        Me.MLookupList1.BorderColor = System.Drawing.Color.Gray
+        Me.MLookupList1.BorderFocusColor = System.Drawing.Color.CornflowerBlue
+        Me.MLookupList1.DataSource = Nothing
+        Me.MLookupList1.IsFocused = False
+        Me.MLookupList1.Location = New System.Drawing.Point(366, 162)
+        Me.MLookupList1.MinimumSize = New System.Drawing.Size(0, 25)
+        Me.MLookupList1.Name = "MLookupList1"
+        Me.MLookupList1.Padding = New System.Windows.Forms.Padding(2)
+        Me.MLookupList1.PlaceholderText = ""
+        Me.MLookupList1.Size = New System.Drawing.Size(323, 25)
+        Me.MLookupList1.TabIndex = 5
+        '
+        'MLookupBox2
+        '
+        Me.MLookupBox2.AutoCompleteCustomSource.AddRange(New String() {"manoj", "babu", "vengara"})
+        Me.MLookupBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.MLookupBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+        Me.MLookupBox2.BackColor = System.Drawing.Color.White
+        Me.MLookupBox2.BorderColor = System.Drawing.Color.Gray
+        Me.MLookupBox2.BorderFocusColor = System.Drawing.Color.CornflowerBlue
+        Me.MLookupBox2.IsFocused = False
+        Me.MLookupBox2.Location = New System.Drawing.Point(12, 234)
+        Me.MLookupBox2.MinimumSize = New System.Drawing.Size(0, 25)
+        Me.MLookupBox2.Name = "MLookupBox2"
+        Me.MLookupBox2.Padding = New System.Windows.Forms.Padding(2)
+        Me.MLookupBox2.PlaceholderText = ""
+        Me.MLookupBox2.Size = New System.Drawing.Size(250, 25)
+        Me.MLookupBox2.TabIndex = 4
         '
         'PopupForm1
         '
-        Me.PopupForm1.Backcolor = System.Drawing.Color.White
+        Me.PopupForm1.AutoClose = False
+        Me.PopupForm1.Backcolor = System.Drawing.Color.FromArgb(CType(CType(21, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(85, Byte), Integer))
+        Me.PopupForm1.DropShadowEnabled = False
         Me.PopupForm1.Font = Nothing
-        Me.PopupForm1.ForeColor = System.Drawing.Color.Black
-        Me.PopupForm1.Height = 150
+        Me.PopupForm1.ForeColor = System.Drawing.Color.Silver
+        Me.PopupForm1.Height = 500
         Me.PopupForm1.HostForm = Nothing
         Me.PopupForm1.ShowTitle = False
-        Me.PopupForm1.TitleBackcolor = System.Drawing.Color.White
+        Me.PopupForm1.TitleBackcolor = System.Drawing.Color.FromArgb(CType(CType(14, Byte), Integer), CType(CType(42, Byte), Integer), CType(CType(56, Byte), Integer))
         Me.PopupForm1.TitleText = "Title"
-        Me.PopupForm1.Width = 300
+        Me.PopupForm1.Width = 400
+        '
+        'MPopupMsg1
+        '
+        Me.MPopupMsg1.Backcolor = System.Drawing.Color.FromArgb(CType(CType(13, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(253, Byte), Integer))
+        Me.MPopupMsg1.Font = Nothing
+        Me.MPopupMsg1.ForeColor = System.Drawing.Color.White
+        Me.MPopupMsg1.Height = 150
+        Me.MPopupMsg1.Style = MControls.MPopupMsg.Styles.Primary
+        Me.MPopupMsg1.StyleCustomColor = System.Drawing.Color.Empty
+        Me.MPopupMsg1.Width = 300
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PictureBox1.Location = New System.Drawing.Point(557, 272)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(15, 15)
+        Me.PictureBox1.TabIndex = 8
+        Me.PictureBox1.TabStop = False
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Control
-        Me.ClientSize = New System.Drawing.Size(933, 508)
-        Me.Controls.Add(Me.ToolStrip1)
+        Me.ClientSize = New System.Drawing.Size(884, 508)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.MTextBox1)
+        Me.Controls.Add(Me.MLookupList1)
+        Me.Controls.Add(Me.MLookupBox2)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -104,8 +167,7 @@ Partial Class Form1
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -116,6 +178,10 @@ Partial Class Form1
     Friend WithEvents PopupForm1 As MControls.MPopupForm
     Friend WithEvents Button2 As Button
     Friend WithEvents Button3 As Button
-    Friend WithEvents ToolStrip1 As ToolStrip
-    Friend WithEvents ToolStripButton1 As ToolStripButton
+    Friend WithEvents MPopupMsg1 As MControls.MPopupMsg
+    Friend WithEvents MLookupBox2 As MControls.MLookupBox
+    Friend WithEvents MLookupList1 As MControls.MLookupList
+    Friend WithEvents MTextBox1 As MControls.MTextBox
+    Friend WithEvents Button4 As Button
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

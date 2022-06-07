@@ -49,6 +49,7 @@ Public Class MPopupForm
         PanelHost = New Panel
         PanelHost.BackColor = SystemColors.ControlLight
         PanelHost.Dock = DockStyle.Fill
+        AddHandler PanelHost.PreviewKeyDown, AddressOf PanelHost_PreviewKeyDown
 
         lblTitle = New Label
         lblTitle.AutoSize = False
@@ -88,6 +89,13 @@ Public Class MPopupForm
         _PopupMain.Items.Add(_HostMain)
     End Sub
 
+    Private Sub PanelHost_PreviewKeyDown(sender As Object, e As PreviewKeyDownEventArgs)
+        MsgBox("hello")
+        If (e.KeyCode = Keys.Enter) Or (e.KeyCode = Keys.Escape) Then
+
+        End If
+    End Sub
+
     Private Sub lblTitle_BackColorChanged(sender As Object, e As EventArgs)
         If (lblTitle.BackColor.GetBrightness() >= 0.6F) Then
             lblTitle.ForeColor = Color.Black
@@ -118,6 +126,7 @@ Public Class MPopupForm
         End Get
         Set(value As Color)
             _Backcolor = value
+            PanelHost.BackColor = value
         End Set
     End Property
 
@@ -240,6 +249,15 @@ Public Class MPopupForm
             End If
         End Set
     End Property
+
+    '
+    <DefaultValue(False)> <CategoryAttribute("PropertyCategoryAsynchronous")> <DescriptionAttribute("BackgroundWorker_WorkerReportsProgress")>
+    <Browsable(False)>
+    Public Overloads Property WorkerReportsProgress As Boolean
+    '
+    <DefaultValue(False)> <CategoryAttribute("PropertyCategoryAsynchronous")> <DescriptionAttribute("BackgroundWorker_WorkerSupportsCancellation")>
+    <Browsable(False)>
+    Public Overloads Property WorkerSupportsCancellation As Boolean
 
     Public Sub Show(ByVal control As Control, Optional ByVal x As Integer = 0, Optional ByVal y As Integer = 0)
         If Not IsNothing(_HostMain) Then

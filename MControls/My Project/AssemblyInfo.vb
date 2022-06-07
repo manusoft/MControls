@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("Custom controls by Manojbabu")>
 <Assembly: AssemblyCompany("Manojbabu")>
 <Assembly: AssemblyProduct("MControls")>
-<Assembly: AssemblyCopyright("Copyright © Laksya Solutions 2021")>
+<Assembly: AssemblyCopyright("Copyright © Laksya Solutions 2021-2022")>
 <Assembly: AssemblyTrademark("Manojbabu")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.21.11.1121")>
-<Assembly: AssemblyFileVersion("1.21.11.1121")>
+<Assembly: AssemblyVersion("2.22.4.1260")>
+<Assembly: AssemblyFileVersion("2.22.4.1260")>

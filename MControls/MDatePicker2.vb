@@ -94,7 +94,7 @@ Public Class MDatePicker2
             _host.AutoSize = False
             _host.Margin = Padding.Empty
             _host.Padding = Padding.Empty
-            _popup.Show(ParentForm, New Point(Me.Left, Me.Bottom))
+            _popup.Show(ParentForm, New Point(Me.Left + 1, Me.Bottom + 1))
 
             pnl.BackColor = BackColor
             If (BackColor.GetBrightness() >= 0.6F) Then

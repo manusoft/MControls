@@ -51,6 +51,7 @@ Partial Class MSearchBox
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(17, 19)
         Me.btnClear.TabIndex = 5
+        Me.btnClear.TabStop = False
         Me.btnClear.UseVisualStyleBackColor = True
         Me.btnClear.Visible = False
         '

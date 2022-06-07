@@ -137,14 +137,11 @@ Public Class MComboBox
     End Sub
 
     Protected Overrides Sub OnDrawItem(ByVal e As System.Windows.Forms.DrawItemEventArgs)
-        Try
+        If (e.Index >= 0) Then
             e.DrawBackground()
             e.Graphics.DrawString(Me.Items(e.Index).ToString, Me.Font, Brushes.Black, e.Bounds, StringFormat.GenericDefault)
             e.DrawFocusRectangle()
-
-        Catch ex As Exception
-            Debug.Print(ex.Message)
-        End Try
+        End If
     End Sub
 
     Protected Overrides Sub OnPaintBackground(pevent As PaintEventArgs)

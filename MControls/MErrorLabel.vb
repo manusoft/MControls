@@ -35,6 +35,7 @@ Public Class MErrorLabel
     Private _Delay As Integer = 3
     Private _Max As Integer = 10
     Private _StyleCustomColor As Color
+    Private _ForeColor As Color = Color.Black
 
     Public Sub New()
 
@@ -85,7 +86,18 @@ Public Class MErrorLabel
             _StyleCustomColor = value
             If Style = _Styles.Custom Then
                 MyBase.BackColor = value
+                lblError.ForeColor = ForeColor
             End If
+        End Set
+    End Property
+
+    Public Overrides Property ForeColor As Color
+        Get
+            Return _ForeColor
+        End Get
+        Set(value As Color)
+            _ForeColor = value
+            lblError.ForeColor = value
         End Set
     End Property
 
@@ -105,6 +117,7 @@ Public Class MErrorLabel
                 MyBase.BackColor = Color.FromArgb(13, 202, 240)
             Case _Styles.Custom
                 MyBase.BackColor = StyleCustomColor
+                lblError.ForeColor = ForeColor
         End Select
     End Sub
 

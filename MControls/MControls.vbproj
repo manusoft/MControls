@@ -70,6 +70,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MCheckBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MCirclePictureBox.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -80,6 +83,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="MComboBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MDataGridView.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MDatePicker.vb">
@@ -114,10 +120,25 @@
     <Compile Include="MLookupBox.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="MLookupList.Designer.vb">
+      <DependentUpon>MLookupList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MLookupList.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="MMC.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="MPanel.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MPictureBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MPopupMsg.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MRadioButton.vb">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MSearchBox.Designer.vb">
@@ -176,6 +197,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MLookupBox.resx">
       <DependentUpon>MLookupBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MLookupList.resx">
+      <DependentUpon>MLookupList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MSearchBox.resx">
       <DependentUpon>MSearchBox.vb</DependentUpon>

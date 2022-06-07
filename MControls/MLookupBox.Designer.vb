@@ -51,6 +51,7 @@ Partial Class MLookupBox
         Me.btnMore.Name = "btnMore"
         Me.btnMore.Size = New System.Drawing.Size(17, 19)
         Me.btnMore.TabIndex = 8
+        Me.btnMore.TabStop = False
         Me.btnMore.UseVisualStyleBackColor = False
         '
         'MLookupBox

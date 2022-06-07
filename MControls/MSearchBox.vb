@@ -15,6 +15,9 @@ Public Class MSearchBox
     Private _PlaceholderText As String = ""
     Private _Font As Font
     Private _IsFocused As Boolean = False
+    Private _AutoCompleteCustomSource As AutoCompleteStringCollection
+    Private _AutoCompleteSource As AutoCompleteSource
+    Private _AutoCompleteMode As AutoCompleteMode
 
     Private Const _SetPlaceholder As Integer = &H1501
 
@@ -61,6 +64,7 @@ Public Class MSearchBox
             txtSearch.BackColor = value
             picIcon.BackColor = value
             btnClear.BackColor = value
+            btnClear.FlatAppearance.BorderColor = value
         End Set
     End Property
 
@@ -114,6 +118,34 @@ Public Class MSearchBox
         End Get
         Set(value As String)
             txtSearch.Text = value
+        End Set
+    End Property
+
+    Public Property AutoCompleteSource As AutoCompleteSource
+        Get
+            Return txtSearch.AutoCompleteSource
+        End Get
+        Set(value As AutoCompleteSource)
+            txtSearch.AutoCompleteSource = value
+        End Set
+    End Property
+
+    Public Property AutoCompleteMode As AutoCompleteMode
+        Get
+            Return txtSearch.AutoCompleteMode
+        End Get
+        Set(value As AutoCompleteMode)
+            txtSearch.AutoCompleteMode = value
+        End Set
+    End Property
+
+    <Browsable(True)> <DesignerSerializationVisibility(DesignerSerializationVisibility.Content)> <Editor("System.Windows.Forms.Design.ListControlStringCollectionEditor, System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a", GetType(Drawing.Design.UITypeEditor))> <EditorBrowsable(EditorBrowsableState.Always)> <Localizable(True)> <DescriptionAttribute("TextBoxAutoCompleteCustomSourceDescr")>
+    Public Property AutoCompleteCustomSource As AutoCompleteStringCollection
+        Get
+            Return txtSearch.AutoCompleteCustomSource
+        End Get
+        Set(value As AutoCompleteStringCollection)
+            txtSearch.AutoCompleteCustomSource = value
         End Set
     End Property
 

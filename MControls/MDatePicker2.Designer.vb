@@ -53,15 +53,15 @@ Partial Class MDatePicker2
         Me.btnDropdown.TabIndex = 1
         Me.btnDropdown.UseVisualStyleBackColor = False
         '
-        'MDTP
+        'MDatePicker2
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.BackColor = System.Drawing.Color.DeepSkyBlue
         Me.Controls.Add(Me.lblText)
         Me.Controls.Add(Me.btnDropdown)
         Me.Font = New System.Drawing.Font("Segoe UI", 10.5!)
-        Me.MinimumSize = New System.Drawing.Size(229, 25)
-        Me.Name = "MDTP"
+        Me.MinimumSize = New System.Drawing.Size(100, 25)
+        Me.Name = "MDatePicker2"
         Me.Padding = New System.Windows.Forms.Padding(2)
         Me.Size = New System.Drawing.Size(229, 25)
         Me.ResumeLayout(False)

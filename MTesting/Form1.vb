@@ -1,4 +1,5 @@
 ﻿Imports System.Reflection
+Imports MControls
 
 Public Class Form1
     Private _PopupMain As ToolStripDropDown = New ToolStripDropDown()
@@ -6,6 +7,7 @@ Public Class Form1
     Private PanelMain As Panel
 
     Private dateTimePickerHost As ToolStripControlHost
+    Dim TestAutoComplete As New AutoCompleteStringCollection
 
     Private Sub InitializeDateTimePickerHost()
 
@@ -28,7 +30,7 @@ Public Class Form1
         CType(dateTimePickerHost.Control, DateTimePicker).Format = DateTimePickerFormat.Short
 
         ' Add the control host to the ToolStrip.
-        ToolStrip1.Items.Add(dateTimePickerHost)
+        'ToolStrip1.Items.Add(dateTimePickerHost)
 
     End Sub
 
@@ -49,31 +51,42 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        InitializeDateTimePickerHost()
+        'InitializeDateTimePickerHost()
 
-        PanelMain = New Panel
-        PanelMain.AutoSize = False
-        PanelMain.BackColor = Color.Green
-        PanelMain.Font = New Font("Segoe UI", 10.5F)
-
-
-        _HostMain = New ToolStripControlHost(PanelMain)
-        _HostMain.AutoSize = False
-        _HostMain.Margin = Padding.Empty
-        _HostMain.Padding = Padding.Empty
-
-        _PopupMain.AutoClose = True
-        ' _PopupMain.BackColor = Color.Transparent
-        _PopupMain.Margin = Padding.Empty
-        _PopupMain.Padding = Padding.Empty
-        _PopupMain.Items.Add(_HostMain)
-        _PopupMain.DropShadowEnabled = False
-        _PopupMain.AllowTransparency = True
-        _PopupMain.Opacity = 50
-        _PopupMain.AutoSize = True
+        'PanelMain = New Panel
+        'PanelMain.AutoSize = False
+        'PanelMain.BackColor = Color.Green
+        'PanelMain.Font = New Font("Segoe UI", 10.5F)
 
 
-        PopupForm1.HostForm = Form2
+        '_HostMain = New ToolStripControlHost(PanelMain)
+        '_HostMain.AutoSize = False
+        '_HostMain.Margin = Padding.Empty
+        '_HostMain.Padding = Padding.Empty
+
+        '_PopupMain.AutoClose = True
+        '' _PopupMain.BackColor = Color.Transparent
+        '_PopupMain.Margin = Padding.Empty
+        '_PopupMain.Padding = Padding.Empty
+        '_PopupMain.Items.Add(_HostMain)
+        '_PopupMain.DropShadowEnabled = False
+        '_PopupMain.AllowTransparency = True
+        '_PopupMain.Opacity = 50
+        '_PopupMain.AutoSize = True
+
+
+        'PopupForm1.HostForm = Form2
+
+        Dim i As Byte
+
+        Dim colNames As String() = [Enum].GetNames(GetType(KnownColor))
+        Do While i < colNames.Length - 1
+            TestAutoComplete.Add(colNames(i).ToString)
+            i = i + 1
+        Loop
+
+        MLookupBox2.AutoCompleteCustomSource = TestAutoComplete
+
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -82,10 +95,20 @@ Public Class Form1
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Me.Width = Me.Width - 1
+
     End Sub
 
     Private Sub Form1_Move(sender As Object, e As EventArgs) Handles Me.Move
 
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+
+    End Sub
+
+    Private Sub PictureBox1_Paint(sender As Object, e As PaintEventArgs) Handles PictureBox1.Paint
+        e.Graphics.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
+        e.Graphics.DrawLine(New Pen(Color.Red, 1.5), New PointF(1, 1), New PointF(10, 10))
+        e.Graphics.DrawLine(New Pen(Color.Red, 1.5), New PointF(1, 10), New PointF(10, 1))
     End Sub
 End Class
